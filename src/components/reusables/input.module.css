@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: 1rem;
+  gap: 0.4rem;
+}
+
+.wrapper input {
+  border: 0.05rem solid rgba(145, 158, 171, 0.32);
+  padding: 1rem;
+  background-color: #fafafa;
+  border-radius: 8px;
+  width: 100%;
+  transition: border 0.1s linear;
+}
+
+.wrapper input:focus {
+  outline: none;
+  border-color: black;
+  border-width: 0.1rem;
+  background-color: white;
+}
+
+.wrapper input:focus + label {
+  color: black;
+}
+
+.wrapper .errorMessage {
+  color: black;
+}

@@ -1,0 +1,17 @@
+.button {
+    background: linear-gradient(100.73deg, #d2232a 25.11%, #414042 128.71%);
+    border-radius: 8px;
+    width: 100%;
+    color: white;
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button:hover {
+    background: linear-gradient(to left, #d2232a 25.11%, #414042 128.71%);
+  }
+  
+  .button[disabled] {
+    opacity: 0.2;
+  }
