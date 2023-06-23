@@ -1,5 +1,5 @@
 # web
-## Follow the below to run the project
+## Follow the instructions below to run the project
  git clone into the web repo using the [git clone] and add the repo link to it
  
 use the [*cd*] command to change directory into the web repository(also known as folderor directory)
