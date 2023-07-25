@@ -1,0 +1,27 @@
+#header{
+    text-align: center;
+}
+#Detailbox{
+    justify-content: center;
+}
+
+#Contain{
+    position: absolute;
+    left: 50%;
+    margin-top: 20px;
+    margin-left: -190px;
+    
+    
+    
+  
+}
+#Bottom{
+    position: absolute;
+    margin-top: 50%;
+   
+
+    
+    
+
+}
+

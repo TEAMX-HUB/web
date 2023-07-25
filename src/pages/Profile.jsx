@@ -2,14 +2,15 @@ import { Link } from 'react-router-dom'
 import profile from "../assets/profile.png"
 import profile2 from '../assets/profile2.png'
 import chevron from '../assets/chevron.png'
+import './profile.css'
 
 const Profile = () => {
   return (
     <div className=' space-y-5 '>
-        <h1  className='text-[20px]'>Profile</h1>
+        <h1  className='text-[20px]' id='header'>Profile</h1>
        <div className="flex items-center justify-center">
          
-       <div style={{background:"#CDE5CE",boxShadow:"0px 4px 44px rgba(0, 0, 0, 0.06)",borderRadius:"10px"}} className="flex h-[109px] p-2 space-x-4 max-w-md w-[383px]  items-center">
+       <div style={{background:"#CDE5CE",boxShadow:"0px 4px 44px rgba(0, 0, 0, 0.06)",borderRadius:"10px"}} className="flex h-[109px] p-2 space-x-4 max-w-md w-[383px]  items-center" id='Detailbox'>
        
       <div className="w-[57px] h-[57px] bg-[#F4850B]  "> <img src={profile2} alt="" /></div>
       <div className="">
@@ -17,8 +18,8 @@ const Profile = () => {
        <p className='text-[#ABABAB] text-[18px]'>Itunuoluwa@petra.africa</p>
       </div>
 </div>
-       </div>
-       <div style={{background:"white", boxShadow: "0px 4px 47px rgba(48, 5, 7, 0.08)",borderRadius:"10px"}} className=" h-[350px] m-3 max-w-md w-[383px]  " >
+       </div > 
+       <div style={{background:"white", boxShadow: "0px 4px 47px rgba(48, 5, 7, 0.08)",borderRadius:"10px"}} className=" h-[350px] m-3 max-w-md w-[383px] " id='Contain' >
 <div className="flex items-center p-5 space-x-4">
 <div className="w-[40px] h-[40px]"><img src={profile} alt="" /></div>
 <div className=" max-w-md  ">
@@ -50,11 +51,12 @@ const Profile = () => {
     <p className=" max-w-md  text-[11px]   ">Update Username and Password</p>
 </div>
 <div className="px-[50px] "><img src={chevron} alt="" /></div>
-</div>
-       </div>
-       <div className="">
+<div className="" id='Bottom'>
         <h1>previously searched classes</h1>
        </div>
+</div>
+       </div>
+        
     </div>
   )
 }
