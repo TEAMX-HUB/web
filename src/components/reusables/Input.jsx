@@ -1,10 +1,11 @@
 import InputStyles from "./input.module.css";
 
-
 const Input = ({
   type,
   label,
   id,
+  onChange,
+  value,
   name = id,
   placeholder,
   style,
@@ -18,7 +19,9 @@ const Input = ({
       <input
         type={type}
         id={id}
+        value={value}
         name={name}
+        onChange={onChange}
         placeholder={placeholder}
         required
         style={style}

@@ -1,26 +1,38 @@
 import { apiSlice } from "./apiSlice";
-const USERS_URL = "https://policycon-backend.azurewebsites.net/";
+const USERS_URL = "https://compax-backend-api.onrender.com";
 
-export const subscriberApiSlice = apiSlice.injectEndpoints({
+export const compaxApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    userLogin: builder.mutation({
+    getBuildings: builder.mutation({
       query: (data) => ({
-        url: `${USERS_URL}`,
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `JWT ${
-            JSON.parse(localStorage.getItem("tokens") || "").access
-          }`,
-        },
-        body: data,
+        url: `${USERS_URL}/api/v1/${data.type}/`,
+        method: "GET",
       }),
     }),
-    
+    searchData: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/api/v1/building/?name=${data.search}`,
+        method: "GET",
+      }),
+    }),
+    getAllSchedule: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/api/v1/building/?name=${data.search}`,
+        method: "GET",
+      }),
+    }),
+    getUserSchedule: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/api/v1/building/?name${data.search}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
 export const {
-  useUserLoginMutation
-  
-} = subscriberApiSlice;
+  useGetBuildingsMutation,
+  useSearchDataMutation,
+  useGetAllScheduleMutation,
+  useGetUserScheduleMutation,
+} = compaxApiSlice;
