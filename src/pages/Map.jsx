@@ -8,8 +8,14 @@ import { useDispatch } from "react-redux";
 import { clearMapData } from "../redux/slices/authSlice";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import image from "../assets/compax.png";
+import menu from "../assets/menu.png";
+import profile from ".././assets/profile.png";
+import "./map.css";
 const btn = {
   width: "150px",
+  background: "green",
 };
 const Map = () => {
   const mapContainerRef = useRef(null);
@@ -63,7 +69,7 @@ const Map = () => {
           container: mapContainerRef.current,
           map: map,
           center: [-1.565094, 6.6731619],
-          zoom: 20,
+          zoom: 17,
         });
 
         const markerSymbol = {
@@ -106,7 +112,7 @@ const Map = () => {
               <p>classroom no: {n_classrooms}</p>
             </div>
             <div>
-            <button class="popup-button">Click Me</button>
+            
       </div>`,
           });
 
@@ -150,6 +156,8 @@ const Map = () => {
 
   const handleTypeChange = (type) => {
     setSelectedType(type);
+    setSelectedType(type);
+    setActiveCategory(type);
   };
   const [searchContainer, setSearchContainer] = useState(false);
   const handleSearchChange = (e) => {
@@ -158,24 +166,48 @@ const Map = () => {
       ? setSearchContainer(true)
       : setSearchContainer(false);
   };
+  const [activeCategory, setActiveCategory] = useState("buildings");
+
+  const activeBtnStyle = {
+    width: "100%",
+    height: "50px",
+    background: "#F5F5F5",
+    color: "black",
+    borderRadius: "8px",
+    border: "2px solid green", // You can set the active button's border color
+  };
+  const btn = {
+    width: "100%",
+    height: "50px",
+    background: "#F5F5F5",
+    color: "black",
+    borderRadius: "8px",
+  };
 
   return (
     <div>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <div className="">
-          <input
-            type="text"
-            value={searchInput}
-            onChange={handleSearchChange}
-            placeholder="Search..."
-            style={{ flex: 1, padding: "8px" }}
-          />
+      <div
+        ref={mapContainerRef}
+        style={{ width: "100%", height: "650px", marginTop: "10px" }}
+      ></div>
+
+      <div className=" h-[300px] rounded-[20px] bg-white space-y-4 p-4 fixed bottom-0  left-0  w-full ">
+        <div className="gap-5 ">
+          <div className="wrapper">
+            <input
+              type="text"
+              value={searchInput}
+              onChange={handleSearchChange}
+              placeholder="Search..."
+              style={{ width: "350px", flex: 1, padding: "8px" }}
+            />
+          </div>
           {searchContainer && (
-            <div className="">
+            <div className=" z-20 mt-2 rounded-[25px] overflow-hidden p-5 w-[350px] h-[20vh]  bg-slate-200 absolute ">
               {buildingsData &&
                 buildingsData?.map((item, index) => (
                   <p
-                    className="  cursor-pointer"
+                    className="  hover:text-red cursor-pointer"
                     onClick={() => {
                       navigate("/confirm");
                       dispatch(setMapData(JSON.stringify(item)));
@@ -183,26 +215,41 @@ const Map = () => {
                     key={index}
                   >
                     {item.name}
+                    {item.staff_personnel && <p>{item.staff_personnel}</p>}
+                    {item.lab_reference && <p>{item.lab_reference}</p>}
                   </p>
                 ))}
             </div>
           )}
         </div>
-
-        <Button style={btn} onClick={() => handleTypeChange("buildings")}>
-          Buildings
-        </Button>
-        <Button style={btn} onClick={() => handleTypeChange("classrooms")}>
-          Classrooms
-        </Button>
-        <Button style={btn} onClick={() => handleTypeChange("offices")}>
-          Offices
-        </Button>
+        <h1 className=" font-semibold">select location category</h1>
+        <div className="grid  grid-cols-2 gap-5 ">
+          <button
+            style={activeCategory === "buildings" ? activeBtnStyle : btn}
+            onClick={() => handleTypeChange("buildings")}
+          >
+            Buildings
+          </button>
+          <button
+            style={activeCategory === "classrooms" ? activeBtnStyle : btn}
+            onClick={() => handleTypeChange("classrooms")}
+          >
+            Classrooms
+          </button>
+          <button
+            style={activeCategory === "offices" ? activeBtnStyle : btn}
+            onClick={() => handleTypeChange("offices")}
+          >
+            Offices
+          </button>
+          <button
+            style={activeCategory === "labs" ? activeBtnStyle : btn}
+            onClick={() => handleTypeChange("labs")}
+          >
+            labratotories
+          </button>
+        </div>
       </div>
-      <div
-        ref={mapContainerRef}
-        style={{ width: "100%", height: "650px", marginTop: "10px" }}
-      ></div>
     </div>
   );
 };

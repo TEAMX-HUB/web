@@ -26,12 +26,16 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const { user, error } = await supabase.auth.signInWithPassword({
+      const res = await supabase.auth.signInWithPassword({
         email,
         password,
       });
-
-      navigate("/map");
+      console.log(res);
+      if (res.data) {
+        navigate("/map");
+      } else {
+        alert("hello");
+      }
 
       console.log(user);
       if (error) throw error;

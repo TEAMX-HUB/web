@@ -20,7 +20,7 @@ const authSlice = createSlice({
       }
     },
     setTokens: (state, action) => {
-      state.tokens = null;
+      state.tokens = action.payload;
       if (action.payload) {
         localStorage.setItem("tokens", action.payload);
       } else {
@@ -28,7 +28,7 @@ const authSlice = createSlice({
       }
     },
     setSchedule: (state, action) => {
-      state.userSchedules = null;
+      state.userSchedules = action.payload;
       if (action.payload) {
         localStorage.setItem("userSchedules", action.payload);
       } else {
@@ -36,7 +36,7 @@ const authSlice = createSlice({
       }
     },
     setMapData: (state, action) => {
-      state.mapData = null;
+      state.mapData = action.payload;
       if (action.payload) {
         localStorage.setItem("mapData", action.payload);
       } else {
@@ -62,4 +62,4 @@ export const {
   logout,
 } = authSlice.actions;
 
-export default authSlice;
+export default authSlice; // Export the generated reducer function

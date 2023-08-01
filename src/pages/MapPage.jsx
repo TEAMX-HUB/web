@@ -28,7 +28,7 @@ const MapPage = () => {
           boxShadow: "0px 4px 47px rgba(48, 5, 7, 0.08)",
           borderRadius: "30px",
         }}
-        className=" h-[300px] space-y-4 p-4 fixed bottom-0  left-0  w-full  "
+        className=" h-[400px] space-y-4 p-4 fixed bottom-0  left-0  w-full  "
       >
         <h1 className="text-[20px]">Select Location</h1>
         <Input placeholder="search location here" />

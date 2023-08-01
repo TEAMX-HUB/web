@@ -11,19 +11,36 @@ export const compaxApiSlice = apiSlice.injectEndpoints({
     }),
     searchData: builder.mutation({
       query: (data) => ({
-        url: `${USERS_URL}/api/v1/building/?name=${data.search}`,
+        url: `${USERS_URL}/api/v1/search/${data.type}/?name=${data.search}`,
         method: "GET",
       }),
     }),
     getAllSchedule: builder.mutation({
       query: (data) => ({
-        url: `${USERS_URL}/api/v1/building/?name=${data.search}`,
+        url: `${USERS_URL}/api/v1/?name=${data.search}`,
         method: "GET",
       }),
     }),
     getUserSchedule: builder.mutation({
       query: (data) => ({
-        url: `${USERS_URL}/api/v1/building/?name${data.search}`,
+        url: `${USERS_URL}/api/v1/i/schedule/day/?year_group=${encodeURIComponent(
+          data.year_group
+        )}&department=${encodeURIComponent(data.department)}`,
+
+        method: "GET",
+      }),
+    }),
+    createUser: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/api/v1/i/new/`,
+        body: data,
+        method: "POST",
+      }),
+    }),
+    getRatings: builder.mutation({
+      query: () => ({
+        url: `${USERS_URL}/api/v1/i/new/`,
+        body: data,
         method: "GET",
       }),
     }),
@@ -35,4 +52,6 @@ export const {
   useSearchDataMutation,
   useGetAllScheduleMutation,
   useGetUserScheduleMutation,
+  useCreateUserMutation,
+  useGetRatingsMutation,
 } = compaxApiSlice;
