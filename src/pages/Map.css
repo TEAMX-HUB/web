@@ -1,0 +1,40 @@
+.search {
+     align-items: center;
+     border-radius: 5px;
+     overflow: scroll;
+     color:blue ;
+     width: fit-content;
+     height: fit-content;
+
+
+}
+    
+
+
+
+
+#searchbox {
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+#searchbox button {
+    width: 150px;
+    padding: 8px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    justify-content: right;
+
+}
+#searchbox button:hover {
+    background-color: #0056b3; 
+  }
+  #searchbox button:active {
+    background-color: #003a80; 
+  } 
